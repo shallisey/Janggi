@@ -13,6 +13,8 @@ The game is played on a 9x10 board where the object is to place the opponents Ge
 
 ### Rules and movement
 
+[Link to a game played at 4x speed](https://www.youtube.com/watch?v=dv5mZsji8hM)
+
 - Soldier
   - The Soldier is similar to a pawn in chess.
   - The soldier piece may move one space left or right or in the advancing position.
