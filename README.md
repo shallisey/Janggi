@@ -9,7 +9,7 @@ The game is played on a 9x10 board where the object is to place the opponents Ge
 - <del>*Reset button after a game has been played*</del>
 - AI for a one player game.
 - Add in rule that will check if enemy generals are facing each other.
-- Add assets to pieces that will make the game look better/more appealing.
+- <del>*Add assets to pieces that will make the game look better/more appealing.*<del>
 
 ### Rules and movement
 
