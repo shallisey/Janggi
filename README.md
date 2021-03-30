@@ -11,6 +11,9 @@ The game is played on a 9x10 board where the object is to place the opponents Ge
 - Add in rule that will check if enemy generals are facing each other.
 - <del>*Add assets to pieces that will make the game look better/more appealing.*<del>
 
+# Updated Board 3/30
+  <img width="50%" alt="Updated Janggi" src="https://user-images.githubusercontent.com/47544304/113047977-9e64d780-9167-11eb-955b-fd43ca4da98e.png">
+
 ### Rules and movement
 
 [Link to a game played at 4x speed](https://www.youtube.com/watch?v=dv5mZsji8hM)
@@ -42,6 +45,7 @@ The game is played on a 9x10 board where the object is to place the opponents Ge
 - General
   - The General, like the Guard, must stay inside the Palace/Fortress, and can only move one space along any line in the Fortress/Palace.
   <img width= 50% alt="General moves" src="https://user-images.githubusercontent.com/47544304/112735568-f955bf00-8f1a-11eb-859f-438e8f2bf607.png">
+  
   
 
 
