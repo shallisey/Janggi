@@ -1297,7 +1297,6 @@ class Board:
         pieces = [
             General('r', 1, 4),
             General('b', 8, 4),
-            # Soldier('r', 3, 0), Soldier('r', 3, 2), Soldier('r', 3, 4), Soldier('r', 3, 6), Soldier('r', 3, 8),
             Soldier('r', 3, 0), Soldier('r', 3, 2), Soldier('r', 3, 4), Soldier('r', 3, 6), Soldier('r', 3, 8),
             Cannon('r', 2, 1), Cannon('r', 2, 7),
             Chariot('r', 0, 0), Chariot('r', 0, 8),
