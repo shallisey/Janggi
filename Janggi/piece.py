@@ -48,20 +48,43 @@ class Piece:
         board_position = (row, col)
         return board_position
 
-    def draw_piece(self, window, piece, radius, font):
+    def draw_piece(self, window, piece):
         # Display either a red or blue piece
         if piece.get_player() == 'r':
-            pygame.draw.circle(window, RED, (piece.get_x_coord(), piece.get_y_coord()), radius)
+            piece_returned = self.return_piece(piece)
+            piece_image = pygame.image.load(piece_returned.get_image())
+            piece_image = pygame.transform.scale(piece_image, (piece_image.get_width()//2, piece_image.get_height()//2))
+            piece_image.convert()
+            img_rect = piece_image.get_rect()
+            img_rect.center = (piece_returned.get_x_coord(), piece_returned.get_y_coord())
+            window.blit(piece_image, img_rect)
+
         elif piece.get_player() == 'b':
-            pygame.draw.circle(window, BLUE, (piece.get_x_coord(), piece.get_y_coord()), radius)
+            # pygame.draw.circle(window, BLUE, (piece.get_x_coord(), piece.get_y_coord()), radius)
+            piece_returned = self.return_piece(piece)
+            piece_image = pygame.image.load(piece_returned.get_image())
+            piece_image = pygame.transform.scale(piece_image, (piece_image.get_width()//2, piece_image.get_height()//2))
+            piece_image.convert()
+            img_rect = piece_image.get_rect()
+            img_rect.center = (piece_returned.get_x_coord(), piece_returned.get_y_coord())
+            window.blit(piece_image, img_rect)
+            # pygame.draw.rect(window, WHITE, img_rect)
 
-        # Display the what which piece it is with who the piece belongs to.
-        # TODO find assets for displaying which piece it is
-        display = piece.get_board_display()
-        text = font.render(display, True, WHITE)
-        text_rect = text.get_rect(center=(piece.get_x_coord(), piece.get_y_coord()))
-        window.blit(text, text_rect)
-
+    def return_piece(self, piece):
+        if piece.get_piece_type() == 'general':
+            return piece
+        elif piece.get_piece_type() == 'guard':
+            return piece
+        elif piece.get_piece_type() == 'elephant':
+            return piece
+        elif piece.get_piece_type() == 'horse':
+            return piece
+        elif piece.get_piece_type() == 'cannon':
+            return piece
+        elif piece.get_piece_type() == 'chariot':
+            return piece
+        elif piece.get_piece_type() == 'soldier':
+            return piece
 
     def get_x_coord(self):
         return self._x_coord
@@ -114,6 +137,13 @@ class Soldier(Piece):
         self._board_display = self.get_player() + self.get_piece_display()
         self._move_key = self.get_board_display() + "(" + str(self.get_row()) + "," + str(self.get_col()) + ")"
         self._soldier_moves = {}
+        if self.get_player() == 'r':
+            self._image = "Janggi/assets/Red_Soldier.png"
+        else:
+            self._image = "Janggi/assets/Blue_Soldier.png"
+
+    def get_image(self):
+        return self._image
 
     def set_move_key(self, new_key):
         self._move_key = new_key
@@ -152,6 +182,13 @@ class Cannon(Piece):
         self._board_display = self.get_player() + self.get_piece_display()
         self._cannon_moves = {}
         self._move_key = self.get_board_display() + "(" + str(self.get_row()) + "," + str(self.get_col()) + ")"
+        if self.get_player() == 'r':
+            self._image = "Janggi/assets/Red_Cannon.png"
+        else:
+            self._image = "Janggi/assets/Blue_Cannon.png"
+
+    def get_image(self):
+        return self._image
 
     def set_move_key(self, new_key):
         self._move_key = new_key
@@ -190,6 +227,13 @@ class Chariot(Piece):
         self._board_display = self.get_player() + self.get_piece_display()
         self._chariot_moves = {}
         self._move_key = self.get_board_display() + "(" + str(self.get_row()) + "," + str(self.get_col()) + ")"
+        if self.get_player() == 'r':
+            self._image = "Janggi/assets/Red_Chariot.png"
+        else:
+            self._image = "Janggi/assets/Blue_Chariot.png"
+
+    def get_image(self):
+        return self._image
 
     def set_move_key(self, new_key):
         self._move_key = new_key
@@ -228,6 +272,13 @@ class Elephant(Piece):
         self._board_display = self.get_player() + self.get_piece_display()
         self._elephant_moves = {}
         self._move_key = self.get_board_display() + "(" + str(self.get_row()) + "," + str(self.get_col()) + ")"
+        if self.get_player() == 'r':
+            self._image = "Janggi/assets/Red_Elephant.png"
+        else:
+            self._image = "Janggi/assets/Blue_Elephant.png"
+
+    def get_image(self):
+        return self._image
 
     def set_move_key(self, new_key):
         self._move_key = new_key
@@ -266,6 +317,13 @@ class Horse(Piece):
         self._board_display = self.get_player() + self.get_piece_display()
         self._soldier_moves = {}
         self._move_key = self.get_board_display() + "(" + str(self.get_row()) + "," + str(self.get_col()) + ")"
+        if self.get_player() == 'r':
+            self._image = "Janggi/assets/Red_Horse.png"
+        else:
+            self._image = "Janggi/assets/Blue_Horse.png"
+
+    def get_image(self):
+        return self._image
 
     def set_move_key(self, new_key):
         self._move_key = new_key
@@ -304,6 +362,13 @@ class Guard(Piece):
         self._board_display = self.get_player() + self.get_piece_display()
         self._guard_moves = {}
         self._move_key = self.get_board_display() + "(" + str(self.get_row()) + "," + str(self.get_col()) + ")"
+        if self.get_player() == 'r':
+            self._image = "Janggi/assets/Red_Guard.png"
+        else:
+            self._image = "Janggi/assets/Blue_Guard.png"
+
+    def get_image(self):
+        return self._image
 
     def set_move_key(self, new_key):
         self._move_key = new_key
@@ -342,6 +407,13 @@ class General(Piece):
         self._board_display = self.get_player() + self.get_piece_display()
         self._general_moves = {}
         self._move_key = self.get_board_display() + "(" + str(self.get_row()) + "," + str(self.get_col()) + ")"
+        if self.get_player() == 'r':
+            self._image = "Janggi/assets/Red_General.png"
+        else:
+            self._image = "Janggi/assets/Blue_General.png"
+
+    def get_image(self):
+        return self._image
 
     def set_move_key(self, new_key):
         self._move_key = new_key

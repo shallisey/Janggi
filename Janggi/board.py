@@ -1276,7 +1276,7 @@ class Board:
 
     def place_on_board(self, window, pieces):
         for piece in pieces:
-            piece.draw_piece(window, piece, RADIUS, font)
+            piece.draw_piece(window, piece)
 
     def new_board(self, row, col):
         """This will create a blank game board."""
