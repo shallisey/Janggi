@@ -1297,18 +1297,18 @@ class Board:
         pieces = [
             General('r', 1, 4),
             General('b', 8, 4),
-            Soldier('r', 3, 0), Soldier('r', 3, 2), Soldier('r', 3, 4), Soldier('r', 3, 6), Soldier('r', 3, 8),
-            Cannon('r', 2, 1), Cannon('r', 2, 7),
+            # Soldier('r', 3, 0), Soldier('r', 3, 2), Soldier('r', 3, 4), Soldier('r', 3, 6), Soldier('r', 3, 8),
+            # Cannon('r', 2, 1), Cannon('r', 2, 7),
             Chariot('r', 0, 0), Chariot('r', 0, 8),
-            Elephant('r', 0, 1), Elephant('r', 0, 6),
-            Horse('r', 0, 2), Horse('r', 0, 7),
-            Guard('r', 0, 3), Guard('r', 0, 5),
-            Soldier('b', 6, 0), Soldier('b', 6, 2), Soldier('b', 6, 4), Soldier('b', 6, 6), Soldier('b', 6, 8),
-            Cannon('b', 7, 1), Cannon('b', 7, 7),
-            Chariot('b', 9, 0), Chariot('b', 9, 8),
-            Elephant('b', 9, 1), Elephant('b', 9, 6),
-            Horse('b', 9, 2), Horse('b', 9, 7),
-            Guard('b', 9, 3), Guard('b', 9, 5)
+            # Elephant('r', 0, 1), Elephant('r', 0, 6),
+            # Horse('r', 0, 2), Horse('r', 0, 7),
+            # Guard('r', 0, 3), Guard('r', 0, 5),
+            # Soldier('b', 6, 0), Soldier('b', 6, 2), Soldier('b', 6, 4), Soldier('b', 6, 6), Soldier('b', 6, 8),
+            # Cannon('b', 7, 1), Cannon('b', 7, 7),
+            # Chariot('b', 9, 0), Chariot('b', 9, 8),
+            # Elephant('b', 9, 1), Elephant('b', 9, 6),
+            # Horse('b', 9, 2), Horse('b', 9, 7),
+            # Guard('b', 9, 3), Guard('b', 9, 5)
         ]
 
         return pieces
@@ -1463,15 +1463,33 @@ class Board:
                              HEIGHT - PADDING_ON_TOP))
 
 
+
+
         self.place_on_board(window, self.get_pieces())
 
         if self.get_game_state() == "UNFINISHED":
             self.draw_player_turn(window)
         else:
-            pass
-
+            self.draw_winner(window, self.get_game_state())
 
         return board_surface
+
+    def draw_winner(self, window, game_state):
+        if game_state == "BLUE_WON":
+            text = font.render(game_state, True, BLACK)
+            window.blit(text,
+                        (WIDTH - text.get_width() - (text.get_width() // 4),
+                         HEIGHT - PADDING_ON_TOP))
+        elif game_state == "RED_WON":
+            text = font.render(game_state, True, BLACK)
+            window.blit(text, (WIDTH - text.get_width() - (text.get_width() // 4), PADDING_ON_TOP))
+        else:
+            text = font.render(game_state, True, BLACK)
+            window.blit(text, (WIDTH - text.get_width() - (text.get_width() // 4), PADDING_ON_TOP))
+            window.blit(text,
+                        (WIDTH - text.get_width() - (text.get_width() // 4),
+                         HEIGHT - PADDING_ON_TOP))
+            print("Draw??")
 
     def get_space_height(self):
         return self._spaceHeight

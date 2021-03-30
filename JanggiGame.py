@@ -39,7 +39,7 @@ def game_loop():
 
             # Pressed the red X to close the game
             if event.type == pygame.QUIT:
-                run = False
+                pygame.quit()
             # If a button is pressed down on the mouse
             if event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -78,11 +78,10 @@ def game_loop():
         if board.get_game_state() == "UNFINISHED":
             pass
         else:
-            print("GAME_OVER")
-            reset_loop(WINDOW, board)
+            reset_loop(WINDOW, board, board.get_game_state())
     pygame.quit()
 
-def reset_loop(window, board):
+def reset_loop(window, board, game_state):
 
     reset_image = pygame.image.load("Janggi/assets/refresh-64x64.png")
     reset_image_big = pygame.transform.rotozoom(reset_image, 0, 2)
@@ -95,19 +94,21 @@ def reset_loop(window, board):
     while game_over:
 
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game_over = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-
                 mouse_position = pygame.mouse.get_pos()
                 if game_over_button.is_over(mouse_position):
                     board.reset()
                     game_loop()
 
-
         board.draw_board(window)
 
         # reset_button.draw_button(window, "Janggi/assets/refresh-64x64.png")
+        # Draw refresh button and if clicked resets the game.
         game_over_button.draw_button(window, "Janggi/assets/refresh-64x64.png")
         pygame.display.update()
+    pygame.quit()
 
 def main():
     # board.place_on_board(WINDOW, board.get_pieces())
