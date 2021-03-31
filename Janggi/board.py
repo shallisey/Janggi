@@ -392,6 +392,10 @@ class Board:
         print("hi")
         moves_for_piece = self.get_this_piece_moves(piece)
         remove_list = []
+
+        #----------
+        # This section just makes sure the player whose turn it is
+        # cannot check themselves.
         for move in moves_for_piece:
             print(move)
             if self.move_places_player_in_check(piece, move, self.get_player_turn(), window):
@@ -406,6 +410,8 @@ class Board:
             moves_for_piece.remove(move)
             print(piece.get_move_key())
             self.get_moves()[piece.get_move_key()].remove(move)
+        #------------
+
         while self.get_selected():
             # get possible moves of piece selected
 
@@ -1245,7 +1251,11 @@ class Board:
         elif piece.get_player() == 'b':
             pygame.draw.circle(window, BLUE, (piece.get_x_coord(), piece.get_y_coord()), RADIUS)
 
+        piece.set_move_key(piece.get_board_display() + "(" + str(piece.get_row()) + "," + str(piece.get_col()) + ")")
+
         self.update_pieces(self.get_board())
+        # piece.set_move_key(piece.get_board_display() + "(" + str(piece.get_row()) + "," + str(piece.get_col()) + ")")
+
         self.update_moves(self.get_board(), self.get_pieces())
         ####
         piece.set_move_key(piece.get_board_display() + "(" + str(piece.get_row()) + "," + str(piece.get_col()) + ")")

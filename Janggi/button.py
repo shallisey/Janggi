@@ -1,5 +1,7 @@
 import pygame
 from .constants import *
+pygame.font.init()
+font = pygame.font.SysFont(None, 24)
 
 
 class Button:
@@ -10,13 +12,19 @@ class Button:
         self._width = width
         self._height = height
 
-    def draw_button(self, window, image_location=None):
+    def draw_button(self, window, image_location, text):
 
         pygame.draw.rect(window, self.get_background_color(), (self.get_x_coord(), self.get_y_coord(), self.get_width(), self.get_height()), 0)
-        if image_location:
+        if image_location and text is None:
             image = pygame.image.load(image_location)
             image = pygame.transform.scale(image, ((SQUARE_SIZE//4), (SQUARE_SIZE//4)))
-            window.blit(image, (self.get_x_coord(), self.get_y_coord()))
+            window.blit(image, (self.get_x_coord() + (self.get_width()//2), self.get_y_coord() + (self.get_height()//2)))
+        elif image_location is None and text:
+            text = font.render(text, True, BLACK)
+            text_rect = text.get_rect(center=(self.get_x_coord() + (self.get_width()//2), self.get_y_coord() + (self.get_height()//2)))
+            window.blit(text, text_rect)
+
+
 
     def is_over(self, mouse_pos):
         if self.get_x_coord() < mouse_pos[0] < self.get_x_coord() + self.get_width():
