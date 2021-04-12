@@ -7,7 +7,8 @@ The game is played on a 9x10 board where the object is to place the opponents Ge
 - <del>*CheckMate algorithm*</del>
 - <del>*Players can not move to a place that will put them in check*</del>
 - <del>*Reset button after a game has been played*</del>
-- AI for a one player game.
+- <del>*Random AI for a one-player game*</del>
+- Actual AI that is not random
 - Add in rule that will check if enemy generals are facing each other.
 - <del>*Add assets to pieces that will make the game look better/more appealing.*<del>
 
